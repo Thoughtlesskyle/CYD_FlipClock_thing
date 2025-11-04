@@ -18,6 +18,7 @@ Web Interface Features
 - Configurable Location Via Location name for Location ID (defaults to New York)
 - Ability to Toggle between Fahrenheit/Celsius
 - Ability to choose between Multi-Color and Monochrome weather icons
+- 
 - Ability to choose between 12/24 hour clocks
 - Configurable Time Zone (defaults to -5GMT EST)
 - Configurable Sleep Timeout (this is a deep sleep of the clock, a tap on the physical screen will be required to wake the device up)
@@ -27,5 +28,10 @@ Web Interface Features
 - Button to Reboot the Device
 
 
-![PXL_20251030_200838457](https://github.com/user-attachments/assets/0e267566-21bd-4115-9160-b5c4f0f4796f)
+
+
+![PXL_20251030_200838457](https://github.com/user-attachments/assets/4d43d2de-9f2c-477b-ba15-0a0b6a27c89f)
+![PXL_20251104_152031378](https://github.com/user-attachments/assets/dd80bd77-06c6-46aa-9786-d03fa2e0f5cc)
+
+*The gradient/checkered pattern effect on the screen is from trying to take a picture it's not how it looks in person 
 
