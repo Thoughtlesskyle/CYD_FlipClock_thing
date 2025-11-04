@@ -10,7 +10,10 @@
 extern userConfig_t userConfig; 
 extern void saveConfig();       
 extern void enterDeepSleep();   
+extern void toggleBacklight();   
+extern bool backlight_state;     
 // ----------------------------
+
 // --- SERVER INSTANTIATION ---
 WebServer server(80); 
 // ----------------------------
@@ -47,6 +50,9 @@ void handleConfig() {
         
         // Save Temperature Unit
         userConfig.use_fahrenheit = server.arg("tempunit").toInt() == 1;
+        
+        // --- NEW: Save Icon Color Setting ---
+        userConfig.use_multi_color_icons = server.arg("iconcolor").toInt() == 1;
         
         // 3. Location Data
         String tempCity = server.arg("city");
@@ -86,6 +92,11 @@ void handleConfig() {
     // Determine selected time format
     String selected24 = userConfig.time_format_24h ? "selected" : "";
     String selected12 = userConfig.time_format_24h ? "" : "selected";
+
+    // --- NEW: Determine selected icon color format ---
+    String selectedMulti = userConfig.use_multi_color_icons ? "selected" : "";
+    String selectedSingle = userConfig.use_multi_color_icons ? "" : "selected";
+
     
     // Start of form
     html += HTML_FORM_START;
@@ -122,6 +133,13 @@ void handleConfig() {
     html += "<option value='0' " + selectedC + ">Celsius</option>";
     html += "</select><br>";
     
+    // --- NEW: Icon Color Section ---
+    html += R"raw(<label for='iconcolor'>Weather Icon Style:</label><select id='iconcolor' name='iconcolor'>)raw";
+    html += "<option value='1' " + selectedMulti + ">Multi-Color</option>";
+    html += "<option value='0' " + selectedSingle + ">Monochrome </option>";
+    html += "</select><br>";
+
+
     // Time Format Select
     html += HTML_TIME_START;
     html += "<option value='0' " + selected12 + ">12-Hour (AM/PM)</option>";
@@ -166,6 +184,17 @@ void handleDeepSleep() {
 }
 
 /**
+ * @brief Handle Backlight Toggle request.
+ */
+void handleBacklightToggle() {
+    toggleBacklight(); // Call the external function
+    // FIX: Explicitly cast the string literal to a String object to enable concatenation
+    String status = String("Backlight is now ") + (backlight_state ? "ON" : "OFF");
+    server.send(200, "text/plain", status);
+}
+
+
+/**
  * @brief Sets up server routing and starts the HTTP server.
  */
 void startConfigServer() {
@@ -173,6 +202,7 @@ void startConfigServer() {
     server.on("/config", HTTP_GET, handleConfig);
     server.on("/reboot", HTTP_GET, handleReboot);
     server.on("/sleep", HTTP_GET, handleDeepSleep);
+    server.on("/toggle_backlight", HTTP_GET, handleBacklightToggle); 
     
     server.begin();
     Serial.println("HTTP Config Server started.");

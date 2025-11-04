@@ -3,20 +3,20 @@
 
 #include <Arduino.h>
 #include <WiFi.h>
-#include <HTTPClient.h>  // NEW
-#include <ArduinoJson.h> // NEW
+#include <HTTPClient.h>  
+#include <ArduinoJson.h> 
 
 // --- WEATHER STATE VARIABLES (Declared here, Defined in .ino) ---
 // These variables are shared across the project.
 extern unsigned long lastWeatherUpdate; 
 extern String weatherStatus;
-extern float temperatureC; 
+extern float temperature;       // <-- FIXED (was temperatureC)
 extern float humidityPercent;
 extern bool weatherDataUpdated; // Signal flag to tell the display to redraw
-// --------------------------------------------------------------
+extern String temperatureUnit;  // <-- ADDED
 
 // --- FUNCTION PROTOTYPES ---
 void fetchWeatherData(); 
-void updateWeatherDisplay(); 
+void updateWeatherDisplay(); // This prototype was already here
 
 #endif // WEATHERHANDLER_H

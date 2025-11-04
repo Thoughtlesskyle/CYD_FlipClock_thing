@@ -36,6 +36,10 @@ typedef struct {
     
     // Location ID (Used when use_city_id_mode is true)
     char weather_city_id[12];    // e.g., "5391959" (for San Jose, CA)
+
+    // >>> NEW: ICON COLOR TOGGLE <<<
+    // true (1) = Multi-Color Icons, false (0) = Single Color Icon
+    bool use_multi_color_icons; 
     
 } userConfig_t;
 
