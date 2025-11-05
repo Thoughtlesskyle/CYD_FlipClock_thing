@@ -27,11 +27,11 @@ Web Interface Features
 - Button to Deep Sleep the Device
 - Button to Reboot the Device
 
-Required Libraries: 
-TFT_eSPI	          Bodmer      
-XPT2046_Touchscreen	Paul Stoffregen
-ArduinoJson	        Benoît Blanchon
-WiFiManager	        tzapu
+Required Libraries:
+TFT_eSPI             Bodmer      
+XPT2046_Touchscreen  Paul Stoffregen
+ArduinoJson          Benoît Blanchon
+WiFiManager          tzapu
 
 
 ![PXL_20251030_200838457](https://github.com/user-attachments/assets/4d43d2de-9f2c-477b-ba15-0a0b6a27c89f)
