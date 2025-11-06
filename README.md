@@ -18,7 +18,6 @@ Web Interface Features
 - Configurable Location Via Location name for Location ID (defaults to New York)
 - Ability to Toggle between Fahrenheit/Celsius
 - Ability to choose between Multi-Color and Monochrome weather icons
-- 
 - Ability to choose between 12/24 hour clocks
 - Configurable Time Zone (defaults to -5GMT EST)
 - Configurable Sleep Timeout (this is a deep sleep of the clock, a tap on the physical screen will be required to wake the device up)
